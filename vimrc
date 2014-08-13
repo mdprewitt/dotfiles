@@ -9,14 +9,14 @@ filetype off
 " 	run :BundleInstall
 "
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call vundle#begin('~/.vim/vundle')
 "call vundle#rc()
 
 " Let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " fancy status bar
-Bundle 'Lokaltog/vim-powerline.git'
+Plugin 'Lokaltog/vim-powerline.git'
 set laststatus=1 " set this to 2 to bring it back
 
 " fuzy search
@@ -39,24 +39,25 @@ Plugin 'kien/ctrlp.vim.git'
 "" let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
 " needed for legacy
-Bundle 'tpope/vim-pathogen.git'
+Plugin 'tpope/vim-pathogen.git'
 
 " Git
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'airblade/vim-gitgutter.git'
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'airblade/vim-gitgutter.git'
 
 " syntax
-Bundle 'kchmck/vim-coffee-script.git'
-Bundle 'rodjek/vim-puppet.git'
-Bundle 'vim-scripts/python.vim.git'
+Plugin 'kchmck/vim-coffee-script.git'
+Plugin 'rodjek/vim-puppet.git'
+Plugin 'vim-scripts/python.vim.git'
 syntax on
 
 " checking syntax errors
-Bundle 'scrooloose/syntastic.git'
+Plugin 'scrooloose/syntastic.git'
 
 " nice python indenting
-Bundle 'hynek/vim-python-pep8-indent.git'
+Plugin 'hynek/vim-python-pep8-indent.git'
 
+call vundle#end()
 filetype plugin indent on
 
 " map jj to normal mode

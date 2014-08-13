@@ -3,6 +3,11 @@
 ignore=( scripts backups install.sh )
 
 DIR=~/dotfiles
+BACKUP_DIR=$DIR/backups/
+
+if [[ ! -f $BACKUP_DIR ]] ; then
+	mkdir $BACKUP_DIR
+fi
 
 cd $DIR
 for filename in *
@@ -24,19 +29,18 @@ do
 		# move old versions moved to backup dir
 		if [ -e ~/.$filename ]
 		then
-			echo ${filename} moved to ${DIR}/backups/${filename}
-			mv ~/.$filename $DIR/backups/
+			echo ${filename} moved to ${BACKUP_DIR}/${filename}
+			mv ~/.$filename $BACKUP_DIR
 		fi
 		
 		# create the link
-		echo new link ~/.${filename} to ${DIR}/backups/${filename}
+		echo new link ~/.${filename} to ${BACKUP_DIR}/${filename}
 		ln -s $DIR/$filename ~/.$filename
 	fi
 done
 
+# let vundle install Plugins
 vim +PluginInstall +qall
 
 # source bashrc
 source ~/.bashrc
-
-# to add new submodules use git submodule add [repo] [path to folder]
