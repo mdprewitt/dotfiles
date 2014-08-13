@@ -1,0 +1,22 @@
+[user]
+	email = marc@chartbeat.com
+	name = Marc Prewitt
+[push]
+	default = simple
+[color]
+	ui = true
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
+[diff]
+	tool = vimdiff
+[alias]
+	d = difftool
+	co = checkout
+	s = status
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lb = log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
+	p = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
+	r = rebase --interactive origin/HEAD
+	yolo = push -f
