@@ -34,9 +34,7 @@ do
 	fi
 done
 
-# Man, fuck git submodules... I'll update this later to use vundle properly
-## update the submodules
-#git submodule update --init
+vim +PluginInstall +qall
 
 # source bashrc
 source ~/.bashrc
