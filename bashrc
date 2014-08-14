@@ -30,7 +30,10 @@ set -o emacs
 xmodmap ~/.xmodmap 2>/dev/null
 
 # git bash autocomplete
-source `brew --prefix`/etc/bash_completion
+BREW=`which brew`
+if [[ $BREW ]] ; then 
+	source `$BREW --prefix`/etc/bash_completion
+fi
 
 # set prompt
 function short_pwd() {
@@ -86,8 +89,10 @@ psh() {
 	polysh $hosts 
 }
 
+if [[ `which fortune` ]] ; then
 #  ,__,
 #  (oo)____
 #  (__)    )\
 #     ||--|| *
-fortune -s | cowsay $(perl -e '@a=qw/b d g p s t w y/; print q/-/, $a[int(rand(scalar @a))]')
+	fortune -s | cowsay $(perl -e '@a=qw/b d g p s t w y/; print q/-/, $a[int(rand(scalar @a))]')
+fi
