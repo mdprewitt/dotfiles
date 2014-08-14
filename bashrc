@@ -51,23 +51,24 @@ alias tas="tmux attach-session -t"
 
 # Just for Chartbeat
 # ------------------
+export CB_REPO=~/cb
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-export PYTHONPATH=/Users/devon/chartbeat:$PYTHONPATH
+export PYTHONPATH=$CB_REPO:$PYTHONPATH
 
 # the worst things in the world to find in our repo
-export FUCKING_GLOBAL_CONFS=/Users/devon/chartbeat/private/puppet/modules/chartbeat/templates/globalconf/
-export NODES_LOCAL=$HOME/chartbeat/private/puppet/manifests/nodes_local.pp
+export FUCKING_GLOBAL_CONFS=$CB_REPO/private/puppet/modules/chartbeat/templates/globalconf/
+export NODES_LOCAL=$CB_REPO/private/puppet/manifests/nodes_local.pp
 
 # spin up a new VM
 new_vm() {
-	$HOME/chartbeat/external/vmutils/create_vagrant_vm.py -H $@.chartbeat.net -G $HOME/chartbeat/ -v3 --distro=precise
+	$CB_REPO/external/vmutils/create_vagrant_vm.py -H $@.chartbeat.net -G $CB_REPO/ -v3 --distro=precise
 	cd $HOME/vagrant/$@
 	vagrant up
 }
 
 # get the server list for a type
 gsl() {
-	$HOME/chartbeat/external/tools/get_server_list.py $@
+	$CB_REPO/external/tools/get_server_list.py $@
 }
 
 # polysh into all servers of a type
