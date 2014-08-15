@@ -17,6 +17,10 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # for rvm
 PATH=$PATH:$HOME/.rvm/bin
 
+if [ -d /Applications ] ; then
+	export PATH=$PATH:/Applications
+fi
+
 # sync bash history with multiple sessions
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
@@ -24,6 +28,9 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # ALWAYS VIM
 export EDITOR=vim
+if [ `which mvim` ] ; then
+	export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
+fi
 set -o emacs
 
 # source my xmodmap
