@@ -29,7 +29,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # ALWAYS VIM
 export EDITOR=vim
 if [ `which mvim` ] ; then
-	export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
+	export EDITOR="mvim -f --nomru -c 'au VimLeave * !open -a $TERM_PROGRAM'"
 fi
 set -o emacs
 
