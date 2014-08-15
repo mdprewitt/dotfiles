@@ -31,7 +31,7 @@ xmodmap ~/.xmodmap 2>/dev/null
 
 # git bash autocomplete
 BREW=`which brew`
-if [[ $BREW ]] ; then 
+if [[ -f $BREW/etc/bash_completion ]] ; then 
 	source `$BREW --prefix`/etc/bash_completion
 fi
 

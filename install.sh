@@ -1,15 +1,19 @@
 #!/bin/bash
 
-ignore=( scripts backups install.sh )
+ignore=( scripts backups install.sh README.md )
 
-DIR=~/dotfiles
-BACKUP_DIR=$DIR/backups/
+DIR=dotfiles
+BACKUP_DIR=backups/
 
-if [[ ! -f $BACKUP_DIR ]] ; then
+cd
+cd $DIR
+
+if [[ ! -d $BACKUP_DIR ]] ; then
 	mkdir $BACKUP_DIR
 fi
 
-cd $DIR
+git submodule init
+git submodule update
 for filename in *
 do
 	# check if the file should be ignored
