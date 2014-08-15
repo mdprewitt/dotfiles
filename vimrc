@@ -75,7 +75,7 @@ set t_Co=256
 
 " colors
 "colorscheme jellybeans
-"colorscheme github
+colorscheme murphy
 
 " clean up gitgutter
 highlight clear SignColumn
