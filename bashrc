@@ -17,9 +17,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # for rvm
 PATH=$PATH:$HOME/.rvm/bin
 
-if [ -d /Applications ] ; then
-	export PATH=$PATH:/Applications
-fi
+[[ -d /Applications ]] && export PATH=$PATH:/Applications
+[[ -d /Applications/Postgres.app ]] && export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
 
 # sync bash history with multiple sessions
 export HISTCONTROL=ignoredups:erasedups
