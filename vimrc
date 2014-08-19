@@ -77,6 +77,8 @@ set t_Co=256
 "colorscheme jellybeans
 colorscheme murphy
 
+set guifont=Menlo\ Regular:h14
+
 " clean up gitgutter
 highlight clear SignColumn
 
