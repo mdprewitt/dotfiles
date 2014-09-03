@@ -28,14 +28,15 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # ALWAYS VIM
 export EDITOR=vim
 if [ `which mvim` ] ; then
-	export EDITOR="mvim -f --nomru -c 'au VimLeave * !open -a $TERM_PROGRAM'"
+	#export EDITOR="mvim -f --nomru -c 'au VimLeave * !open -a $TERM_PROGRAM'"
+	export EDITOR=`which vim`
 	alias vim=mvim
 
 fi
 set -o emacs
 
 # source my xmodmap
-xmodmap ~/.xmodmap 2>/dev/null
+[[ -f ~/.xmodmap ]] && xmodmap ~/.xmodmap 2>/dev/null
 
 # git bash autocomplete
 BREW=`which brew`

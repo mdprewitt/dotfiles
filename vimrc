@@ -163,7 +163,7 @@ autocmd FileType python
 			\ set smarttab |
 			\ set expandtab |
 			\ call FuckTrailingWhitespace() |
-			\ let g:syntastic_python_checkers = ['pyflakes']
+			\ let g:syntastic_python_checkers = ['flake8']
 
 " set puppet preferences
 autocmd FileType puppet
