@@ -1,0 +1,11 @@
+# -*- mode: conf -*-
+
+[pep8]
+# "invalid name", "missing docstring","string logging parameters"
+# W0142 - for ** magic?
+# W0703 - for catching Exception
+# W0105 - String statement has no effect (we use them for documentation)
+ignore=C0103,C0111,W0402,W0142,W0703,W0105
+max-line-length=120
+exclude=CVS,.git
+
