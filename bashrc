@@ -25,6 +25,10 @@ export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+if [ `which lesspipe.sh` ] ; then
+	export LESSOPEN="|lesspipe.sh %s"
+fi
+
 # ALWAYS VIM
 export EDITOR=vim
 if [ `which mvim` ] ; then
