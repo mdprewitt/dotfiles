@@ -43,8 +43,16 @@ do
 	fi
 done
 
+VIM=`which mvim`
+if [[ "$VIM" == "" ]] ; then
+	VIM=`which vim`
+fi
 # let vundle install Plugins
-vim +PluginInstall +qall
+$VIM +PluginInstall +qall
+
+# compile YouCompleteMe
+cd ~/.vim/vundle/YouCompleteMe
+./install.sh  --clang-completer  # --omnisharp-completer for c#
 
 # source bashrc
 source ~/.bashrc

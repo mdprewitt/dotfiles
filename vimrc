@@ -45,6 +45,9 @@ Plugin 'tpope/vim-pathogen.git'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'airblade/vim-gitgutter.git'
 
+" autocomplete
+Plugin 'Valloric/YouCompleteMe.git'
+
 " syntax
 Plugin 'kchmck/vim-coffee-script.git'
 Plugin 'rodjek/vim-puppet.git'
