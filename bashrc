@@ -18,6 +18,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 PATH=$PATH:$HOME/.rvm/bin
 
 [[ -d /Applications ]] && export PATH=$PATH:/Applications
+[[ -d /usr/texbin ]] && export PATH=$PATH:/usr/texbin
 [[ -d /Applications/Postgres.app ]] && export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
 
 # sync bash history with multiple sessions

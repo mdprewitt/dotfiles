@@ -104,8 +104,8 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 
-" fuck trailing whitespace function
-fun! FuckTrailingWhitespace()
+" kill trailing whitespace function
+fun! KillTrailingWhitespace()
 	autocmd BufWritePre <buffer> :%s/\s\+$//e
 endfun
 
@@ -113,40 +113,40 @@ endfun
 autocmd FileType c
 			\ set expandtab |
 			\ set softtabstop=4 |
-			\ call FuckTrailingWhitespace()
+			\ call KillTrailingWhitespace()
 
 " set C++ preferences (chartbeat does spaces?)
 autocmd FileType cpp
 			\ set expandtab |
 			\ set softtabstop=4 |
-			\ call FuckTrailingWhitespace()
+			\ call KillTrailingWhitespace()
 
 " set ruby preferences
 autocmd FileType ruby
 			\ set expandtab |
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
-			\ call FuckTrailingWhitespace()
+			\ call KillTrailingWhitespace()
 
 " set html preferences
 autocmd FileType html 
 			\ set shiftwidth=2 |
 			\ set tabstop=2 |
-			\ call FuckTrailingWhitespace()
+			\ call KillTrailingWhitespace()
 
 " set html preferences
 autocmd FileType jade
 			\ set expandtab |
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
-			\ call FuckTrailingWhitespace() 
+			\ call KillTrailingWhitespace() 
 
 " set coffee preferences
 autocmd FileType coffee
 			\ set expandtab |
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
-			\ call FuckTrailingWhitespace() |
+			\ call KillTrailingWhitespace() |
 			\ hi link coffeeSpaceError NONE
 
 " set javascript preferences
@@ -154,7 +154,7 @@ autocmd FileType javascript
 			\ set expandtab |
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
-			\ call FuckTrailingWhitespace()
+			\ call KillTrailingWhitespace()
 
 " set python preferences
 autocmd FileType python
@@ -162,7 +162,7 @@ autocmd FileType python
 			\ set softtabstop=4 |
 			\ set smarttab |
 			\ set expandtab |
-			\ call FuckTrailingWhitespace() |
+			\ call KillTrailingWhitespace() |
 			\ let g:syntastic_python_checkers = ['flake8']
 
 " set puppet preferences
@@ -170,11 +170,11 @@ autocmd FileType puppet
 			\ set expandtab |
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
-			\ call FuckTrailingWhitespace()
+			\ call KillTrailingWhitespace()
 
 " set yaml preferences
 autocmd FileType yaml
 			\ set expandtab |
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
-			\ call FuckTrailingWhitespace()
+			\ call KillTrailingWhitespace()
