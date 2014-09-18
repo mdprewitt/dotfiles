@@ -3,7 +3,7 @@ if [ -f $HOME/.secrets ]; then
 	source $HOME/.secrets
 fi
 
-export PATH=$PATH:/usr/local/bin
+export PATH=/usr/local/bin:$PATH
 
 # for node
 export PATH=/usr/local/share/npm:$PATH
@@ -45,8 +45,8 @@ set -o emacs
 
 # git bash autocomplete
 BREW=`which brew`
-if [[ "$BREW" && -f $BREW/etc/bash_completion ]] ; then 
-	source `$BREW --prefix`/etc/bash_completion
+if [[ "$BREW" && -f $( $BREW --prefix )/etc/bash_completion ]] ; then 
+	source $( $BREW --prefix )/etc/bash_completion
 fi
 
 # set prompt
