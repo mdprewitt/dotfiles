@@ -17,7 +17,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " fancy status bar
 Plugin 'Lokaltog/vim-powerline.git'
-set laststatus=1 " set this to 2 to bring it back
+set laststatus=2 " set this to 2 to bring it back
 
 " fuzy search
 Plugin 'kien/ctrlp.vim.git'
