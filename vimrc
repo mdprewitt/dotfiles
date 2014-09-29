@@ -131,6 +131,13 @@ autocmd FileType ruby
 			\ set softtabstop=2 |
 			\ call KillTrailingWhitespace()
 
+" set eruby preferences
+autocmd FileType eruby
+			\ set expandtab |
+			\ set shiftwidth=4 |
+			\ set softtabstop=4 |
+			\ call KillTrailingWhitespace()
+
 " set html preferences
 autocmd FileType html 
 			\ set shiftwidth=2 |
