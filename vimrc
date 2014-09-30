@@ -91,6 +91,9 @@ set hlsearch
 " show line numbers
 set number
 
+" allow switching out of modified buffers
+set hidden
+
 " mark the 81st column
 set colorcolumn=81
 hi ColorColumn ctermbg=lightyellow guibg=lightyellow 
