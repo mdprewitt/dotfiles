@@ -21,6 +21,7 @@ set laststatus=2 " set this to 2 to bring it back
 
 " fuzy search
 Plugin 'kien/ctrlp.vim.git'
+let g:ctrlp_custom_ignore= "(jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po)$"
 "" let ctrlp_filter_greps = ".
 ""     \ "egrep -iv '\\.(" .
 ""     \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
@@ -37,6 +38,7 @@ Plugin 'kien/ctrlp.vim.git'
 ""     \ ctrlp_filter_greps
 "" endif
 "" let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
+"" let g:ctrlp_user_command = 'ctrlp_filter_greps'
 
 " needed for legacy
 Plugin 'tpope/vim-pathogen.git'
