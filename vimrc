@@ -47,8 +47,10 @@ Plugin 'tpope/vim-pathogen.git'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'airblade/vim-gitgutter.git'
 
-" autocomplete
-Plugin 'Valloric/YouCompleteMe.git'
+if v:version > 703 || (v:version == 703 && has('patch584'))
+	" autocomplete
+	Plugin 'Valloric/YouCompleteMe.git'
+endif
 
 " syntax
 Plugin 'kchmck/vim-coffee-script.git'
