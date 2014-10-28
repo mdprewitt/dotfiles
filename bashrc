@@ -49,6 +49,13 @@ if [[ "$BREW" && -f $( $BREW --prefix )/etc/bash_completion ]] ; then
 	source $( $BREW --prefix )/etc/bash_completion
 fi
 
+if [[ -d ~/google-cloud-sdk/ ]] ; then
+    # The next line updates PATH for the Google Cloud SDK.
+    source ~/google-cloud-sdk/path.bash.inc
+    # The next line enables bash completion for gcloud.
+    source ~/google-cloud-sdk/completion.bash.inc
+fi
+
 # set prompt
 function short_pwd() {
 	echo -n $(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
