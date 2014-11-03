@@ -51,8 +51,7 @@ fi
 $VIM +PluginInstall +qall
 
 # compile YouCompleteMe
-cd ~/.vim/vundle/YouCompleteMe
-./install.sh  --clang-completer  # --omnisharp-completer for c#
+cd ~/.vim/vundle/YouCompleteMe && ./install.sh  --clang-completer  # --omnisharp-completer for c#
 
 # source bashrc
 source ~/.bashrc
