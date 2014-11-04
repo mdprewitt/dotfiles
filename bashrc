@@ -3,23 +3,30 @@ if [ -f $HOME/.secrets ]; then
 	source $HOME/.secrets
 fi
 
-export PATH=/usr/local/bin:$PATH
+path_prepend ()
+{
+	if [[ -d $1 ]] ; then 
+		PATH=${PATH//":$1"/} #delete any instances in the middle or at the end
+		PATH=${PATH//"$1:"/} #delete any instances at the beginning
+		export PATH="$1:$PATH" #prepend to beginning
+	fi
+}
 
-# for node
-export PATH=/usr/local/share/npm:$PATH
+if [[ -d ~/google-cloud-sdk/ ]] ; then
+    # The next line updates PATH for the Google Cloud SDK.
+    source ~/google-cloud-sdk/path.bash.inc
+    # The next line enables bash completion for gcloud.
+    source ~/google-cloud-sdk/completion.bash.inc
+fi
 
-# for python
-export PATH=/usr/local/lib:$PATH
-
-# for heroku
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# for rvm
-PATH=$PATH:$HOME/.rvm/bin
-
-[[ -d /Applications ]] && export PATH=$PATH:/Applications
-[[ -d /usr/texbin ]] && export PATH=$PATH:/usr/texbin
-[[ -d /Applications/Postgres.app ]] && export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+path_prepend /usr/local/share/npm      # for node
+path_prepend /usr/local/lib            # for python
+path_prepend /usr/local/heroku/bin     # for heroku
+path_prepend $HOME/.rvm/bin            # for rvm
+path_prepend /Applications 
+path_prepend /usr/texbin 
+path_prepend /Applications/Postgres.app/Contents/Versions/9.3/bin
+path_prepend /usr/local/bin
 
 # sync bash history with multiple sessions
 export HISTCONTROL=ignoredups:erasedups
@@ -47,13 +54,6 @@ set -o emacs
 BREW=`which brew`
 if [[ "$BREW" && -f $( $BREW --prefix )/etc/bash_completion ]] ; then 
 	source $( $BREW --prefix )/etc/bash_completion
-fi
-
-if [[ -d ~/google-cloud-sdk/ ]] ; then
-    # The next line updates PATH for the Google Cloud SDK.
-    source ~/google-cloud-sdk/path.bash.inc
-    # The next line enables bash completion for gcloud.
-    source ~/google-cloud-sdk/completion.bash.inc
 fi
 
 # set prompt
