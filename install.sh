@@ -48,6 +48,12 @@ if [[ "$VIM" == "" ]] ; then
 	VIM=`which vim`
 fi
 # let vundle install Plugins
+# if [[ ! -h ~/.vim/vundle ]] ; then 
+#     mv ~/.vim/vundle ~/.vim/vundle.bak
+#     OS=$( uname -sr | sed -e 's/ /_/g' )
+#     mkdir ~/.vim/vundle.$OS
+#     ln -s ~/.vim/vundle.$OS ~/.vim/vundle
+# fi
 $VIM +PluginInstall +qall
 
 # compile YouCompleteMe

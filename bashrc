@@ -69,6 +69,11 @@ alias tmux="tmux -2"
 # shortcuts for tmux
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t"
+# reattach to previous session (if using tmux as a login shell
+# if [ $"(tmux ls | grep 0: )" ]; then
+        # tmux switch -t 0
+        # tmux kill-session -a -t 0 
+# fi
 
 # Just for Chartbeat
 # ------------------
@@ -79,6 +84,18 @@ export PYTHONPATH=$CB_REPO:$PYTHONPATH
 # the worst things in the world to find in our repo
 export FUCKING_GLOBAL_CONFS=$CB_REPO/private/puppet/modules/chartbeat/templates/globalconf/
 export NODES_LOCAL=$CB_REPO/private/puppet/manifests/nodes_local.pp
+
+# set where virutal environments will live
+export WORKON_HOME=$HOME/.virtualenvs
+# ensure all new environments are isolated from the site-packages directory
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+# use the same directory for virtualenvs as virtualenvwrapper
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+# makes pip detect an active virtualenv and install to it
+export PIP_RESPECT_VIRTUALENV=true
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+	source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # spin up a new VM
 new_vm() {

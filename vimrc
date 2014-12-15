@@ -22,6 +22,8 @@ set laststatus=2 " set this to 2 to bring it back
 " fuzy search
 Plugin 'kien/ctrlp.vim.git'
 let g:ctrlp_custom_ignore= "(jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po)$"
+let g:ctrlp_regexp = 1      " default=0
+let g:ctrlp_max_files = 0   " default=10000
 "" let ctrlp_filter_greps = ".
 ""     \ "egrep -iv '\\.(" .
 ""     \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
@@ -63,6 +65,17 @@ Plugin 'scrooloose/syntastic.git'
 
 " nice python indenting
 Plugin 'hynek/vim-python-pep8-indent.git'
+ 
+" Clojure syntax highlight
+Plugin 'guns/vim-clojure-static'
+" Editing stuff for S-expressions (forms, elements...). Alternative to paredit.vim. - https://github.com/guns/vim-sexp
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" REPL - https://github.com/tpope/vim-fireplace
+Plugin 'tpope/vim-fireplace'
+
+" Rainbow parenthesis - https://github.com/kien/rainbow_parentheses.vim
+Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -113,6 +126,19 @@ set nosmartindent
 set tabstop=4
 set shiftwidth=4
 set autoindent
+
+" Emacs-like indenting for closure
+let g:clojure_fuzzy_indent=1
+let g:clojure_align_multiline_strings = 1
+ 
+" Add some words which should be indented like defn etc: Compojure/compojure-api, midje and schema stuff mostly.
+let g:clojure_fuzzy_indent_patterns=['^GET', '^POST', '^PUT', '^DELETE', '^ANY', '^HEAD', '^PATCH', '^OPTIONS', '^def']
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+" au Syntax * RainbowParenthesesLoadChevrons
 
 " kill trailing whitespace function
 fun! KillTrailingWhitespace()
@@ -195,3 +221,8 @@ autocmd FileType yaml
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
 			\ call KillTrailingWhitespace()
+
+autocmd FileType clojure 
+            \ setlocal lispwords+=describe,it,testing,facts,fact,provided |
+			\ call KillTrailingWhitespace()
+
