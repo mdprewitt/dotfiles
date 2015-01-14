@@ -66,16 +66,18 @@ Plugin 'scrooloose/syntastic.git'
 " nice python indenting
 Plugin 'hynek/vim-python-pep8-indent.git'
  
-" Clojure syntax highlight
+" Rainbow parenthesis - https://github.com/kien/rainbow_parentheses.vim
+Plugin 'kien/rainbow_parentheses.vim'
+
+" Clojure Stuff
 Plugin 'guns/vim-clojure-static'
 " Editing stuff for S-expressions (forms, elements...). Alternative to paredit.vim. - https://github.com/guns/vim-sexp
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" REPL Help for fireplace
+Plugin 'clojure-emacs/cider-nrepl'
 " REPL - https://github.com/tpope/vim-fireplace
 Plugin 'tpope/vim-fireplace'
-
-" Rainbow parenthesis - https://github.com/kien/rainbow_parentheses.vim
-Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -112,7 +114,7 @@ set number
 set hidden
 
 " mark the 81st column
-set colorcolumn=81
+set colorcolumn=120
 hi ColorColumn ctermbg=lightyellow guibg=lightyellow 
 
 " highlight current line
@@ -226,3 +228,17 @@ autocmd FileType clojure
             \ setlocal lispwords+=describe,it,testing,facts,fact,provided |
 			\ call KillTrailingWhitespace()
 
+" Enable Rainbow Parentheses when dealing with Clojure files
+au FileType clojure RainbowParenthesesActivate
+au Syntax * RainbowParenthesesLoadRound
+ 
+" This should enable Emacs like indentation
+let g:clojure_fuzzy_indent=1
+let g:clojure_align_multiline_strings = 1
+ 
+" Add some words which should be indented like defn etc: Compojure/compojure-api, midje and schema stuff mostly.
+let g:clojure_fuzzy_indent_patterns=['^GET', '^POST', '^PUT', '^DELETE', '^ANY', '^HEAD', '^PATCH', '^OPTIONS', '^def']
+autocmd FileType clojure setlocal lispwords+=describe,it,testing,facts,fact,provided
+ 
+" Disable some irritating mappings
+let g:sexp_enable_insert_mode_mappings = 0
