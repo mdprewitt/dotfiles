@@ -78,6 +78,7 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'clojure-emacs/cider-nrepl'
 " REPL - https://github.com/tpope/vim-fireplace
 Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-leiningen'
 
 call vundle#end()
 filetype plugin indent on
@@ -99,7 +100,7 @@ set t_Co=256
 "colorscheme jellybeans
 colorscheme murphy
 
-set guifont=Menlo\ Regular:h14
+set guifont=Source\ Code\ Pro\ Light:h18
 
 " clean up gitgutter
 highlight clear SignColumn
