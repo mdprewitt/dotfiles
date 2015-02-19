@@ -54,6 +54,10 @@ set -o emacs
 BREW=`which brew`
 if [[ "$BREW" && -f $( $BREW --prefix )/etc/bash_completion ]] ; then 
 	source $( $BREW --prefix )/etc/bash_completion
+elif [[ /etc/bash_completion ]] ; then 
+	source /etc/bash_completion
+else
+	echo "Can't find bash_completion"
 fi
 
 # set prompt
@@ -96,6 +100,11 @@ export PIP_RESPECT_VIRTUALENV=true
 if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
 	source /usr/local/bin/virtualenvwrapper.sh
 fi
+# Setup a new virtualenv and activate it
+if [[ ! -d $WORKON_HOME/base ]] ; then
+	mkvirtualenv base > /dev/null 2>&1
+fi
+workon base
 
 # spin up a new VM
 new_vm() {
