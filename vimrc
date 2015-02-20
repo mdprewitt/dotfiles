@@ -100,6 +100,9 @@ set t_Co=256
 "colorscheme jellybeans
 colorscheme murphy
 
+" set guifont=Menlo\ Regular:h14
+set encoding=utf-8
+set antialias
 set guifont=Source\ Code\ Pro\ Light:h18
 
 " clean up gitgutter
@@ -115,7 +118,7 @@ set number
 set hidden
 
 " mark the 81st column
-set colorcolumn=120
+set colorcolumn=81
 hi ColorColumn ctermbg=lightyellow guibg=lightyellow 
 
 " highlight current line
@@ -147,6 +150,8 @@ au Syntax * RainbowParenthesesLoadBraces
 fun! KillTrailingWhitespace()
 	autocmd BufWritePre <buffer> :%s/\s\+$//e
 endfun
+
+set expandtab
 
 " set C preferences (chartbeat does spaces?)
 autocmd FileType c
@@ -208,6 +213,7 @@ autocmd FileType python
 			\ set softtabstop=4 |
 			\ set smarttab |
 			\ set expandtab |
+			\ set colorcolumn=120 |
 			\ call KillTrailingWhitespace() |
 			\ let g:syntastic_python_checkers = ['flake8']
 
