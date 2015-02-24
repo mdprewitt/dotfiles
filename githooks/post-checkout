@@ -3,6 +3,9 @@
 # Finds all .pyc files with missing .py files and prompts to remove them
 #
 
+# Allows us to read user input below, assigns stdin to keyboard
+exec < /dev/tty
+
 declare -a bad
 for f in $( find . -name "*.pyc" )
 do
@@ -16,7 +19,7 @@ if [[ -n "$bad" ]] ; then
 		echo $f
 	done
 	echo 
-	read -e -p "Remove them now? (Yes/No/Interactive) " yesno
+	read -p "Remove them now? (Yes/No/Interactive) " yesno
 	shopt -s nocasematch
 	if [[ $yesno =~ ^(y(es)*)|(i(nteractive)*)$ ]] ; then
 		interative=""
