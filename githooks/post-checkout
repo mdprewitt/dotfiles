@@ -1,5 +1,7 @@
 #!/bin/bash
 # 
+# Target Language: python
+#
 # Finds all .pyc files with missing .py files and prompts to remove them
 #
 

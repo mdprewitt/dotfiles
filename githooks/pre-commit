@@ -1,7 +1,10 @@
 #!/bin/bash
 #
+# Target Language: python
+#
 # Hook to check for pdb.set_trace() in added lines of
 # code and abort commit if contained.
+#
 
 if git rev-parse --verify HEAD >/dev/null 2>&1
 then
@@ -11,8 +14,9 @@ else
 	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
 fi
 
+# Allows us to read user input below, assigns stdin to keyboard
 # Redirect output to stderr.
-exec 1>&2
+exec 1>&2 < /dev/tty
 
 if git diff --cached -U0 $against | grep -q '^+.*pdb\.set_trace' 
 then
@@ -23,5 +27,11 @@ Error: Attempt to commit a file containing pdb.set_trace():
 EOF
 	git diff --cached $against | egrep -B2 '^(\+\+\+)|(\+.*pdb\.set_trace)'
 
+    echo
+	read -p "Are you sure you want to commit? (Yes/No) " yesno
+	shopt -s nocasematch
+	if [[ $yesno =~ ^(y(es)*)$ ]] ; then
+        exit 0
+	fi
 	exit 1
 fi
