@@ -54,7 +54,7 @@ set -o emacs
 BREW=`which brew`
 if [[ "$BREW" && -f $( $BREW --prefix )/etc/bash_completion ]] ; then 
 	source $( $BREW --prefix )/etc/bash_completion
-elif [[ /etc/bash_completion ]] ; then 
+elif [[ -f /etc/bash_completion ]] ; then 
 	source /etc/bash_completion
 else
 	echo "Can't find bash_completion"
