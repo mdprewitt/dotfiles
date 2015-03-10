@@ -104,7 +104,7 @@ fi
 if [[ ! -d $WORKON_HOME/base ]] ; then
 	mkvirtualenv base > /dev/null 2>&1
 fi
-workon base
+workon base 2>/dev/null
 
 # spin up a new VM
 new_vm() {
