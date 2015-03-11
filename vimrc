@@ -21,26 +21,25 @@ set laststatus=2 " set this to 2 to bring it back
 
 " fuzy search
 Plugin 'kien/ctrlp.vim.git'
-let g:ctrlp_custom_ignore= "(jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po)$"
+"" let g:ctrlp_custom_ignore= "(jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po)$"
 let g:ctrlp_regexp = 1      " default=0
 let g:ctrlp_max_files = 0   " default=10000
-"" let ctrlp_filter_greps = ".
-""     \ "egrep -iv '\\.(" .
-""     \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-""     \ ")$' | " .
-""     \ "egrep -v '^(\\./)?(" .
-""     \ "vendor/|lib/|classes/|libs/|deploy/|.git/|.hg/|.svn/|.*migrations/" .
-""     \ ")'"
-"" let my_ctrlp_git_command = " .
-""     \ "cd %s && git ls-files | " .
-""     \ ctrlp_filter_greps
-"" if has("unix")
-""     let my_ctrlp_user_command = " .
-""     \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
-""     \ ctrlp_filter_greps
-"" endif
-"" let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
-"" let g:ctrlp_user_command = 'ctrlp_filter_greps'
+let ctrlp_filter_greps = "".
+    \ "egrep -iv '\\.(" .
+    \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
+    \ ")$' | " .
+    \ "egrep -v '^(\\./)?(" .
+    \ "vendor/|lib/|classes/|libs/|deploy/|.git/|.hg/|.svn/|.*migrations/" .
+    \ ")'"
+let my_ctrlp_git_command = "" .
+    \ "cd %s && git ls-files | " .
+    \ ctrlp_filter_greps
+if has("unix")
+    let my_ctrlp_user_command = "" .
+    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
+    \ ctrlp_filter_greps
+endif
+let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
 " needed for legacy
 Plugin 'tpope/vim-pathogen.git'

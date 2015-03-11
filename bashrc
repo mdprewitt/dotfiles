@@ -98,7 +98,9 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 # makes pip detect an active virtualenv and install to it
 export PIP_RESPECT_VIRTUALENV=true
 if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-	source /usr/local/bin/virtualenvwrapper.sh
+    if [[ -z "$VIRTUAL_ENV" ]] ; then 
+        source /usr/local/bin/virtualenvwrapper.sh
+    fi
 fi
 # Setup a new virtualenv and activate it
 if [[ ! -d $WORKON_HOME/base ]] ; then
