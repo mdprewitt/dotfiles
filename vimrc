@@ -132,13 +132,6 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 
-" Emacs-like indenting for closure
-let g:clojure_fuzzy_indent=1
-let g:clojure_align_multiline_strings = 1
- 
-" Add some words which should be indented like defn etc: Compojure/compojure-api, midje and schema stuff mostly.
-let g:clojure_fuzzy_indent_patterns=['^GET', '^POST', '^PUT', '^DELETE', '^ANY', '^HEAD', '^PATCH', '^OPTIONS', '^def']
-
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
@@ -232,19 +225,16 @@ autocmd FileType yaml
 
 autocmd FileType clojure 
             \ setlocal lispwords+=describe,it,testing,facts,fact,provided |
-			\ call KillTrailingWhitespace()
+			\ call KillTrailingWhitespace() 
 
-" Enable Rainbow Parentheses when dealing with Clojure files
-au FileType clojure RainbowParenthesesActivate
-au Syntax * RainbowParenthesesLoadRound
  
 " This should enable Emacs like indentation
+" Emacs-like indenting for closure
 let g:clojure_fuzzy_indent=1
 let g:clojure_align_multiline_strings = 1
- 
+
 " Add some words which should be indented like defn etc: Compojure/compojure-api, midje and schema stuff mostly.
 let g:clojure_fuzzy_indent_patterns=['^GET', '^POST', '^PUT', '^DELETE', '^ANY', '^HEAD', '^PATCH', '^OPTIONS', '^def']
-autocmd FileType clojure setlocal lispwords+=describe,it,testing,facts,fact,provided
  
 " Disable some irritating mappings
 let g:sexp_enable_insert_mode_mappings = 0
