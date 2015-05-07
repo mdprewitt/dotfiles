@@ -43,6 +43,13 @@ do
 	fi
 done
 
+# Fixup gitconfig if we're running an older version that doesn't support simple push
+GIT_VER=$( git --version | sed -e 's/.* //' ) 
+if perl -mversion -e "exit(version->parse($GIT_VER) >= version->parse('1.7.11')) " 
+then 
+    git config --global push.default 
+fi
+
 VIM=`which mvim`
 if [[ "$VIM" == "" ]] ; then
 	VIM=`which vim`
