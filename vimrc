@@ -79,6 +79,10 @@ Plugin 'clojure-emacs/cider-nrepl'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-leiningen'
 
+Plugin 'vim-scripts/dbext.vim'
+let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=superfly:passwd=:dbname=superfly'
+
+
 call vundle#end()
 filetype plugin indent on
 
