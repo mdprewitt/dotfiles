@@ -24,6 +24,7 @@ Plugin 'kien/ctrlp.vim.git'
 "" let g:ctrlp_custom_ignore= "(jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po)$"
 let g:ctrlp_regexp = 1      " default=0
 let g:ctrlp_max_files = 0   " default=10000
+let g:ctrlp_cmd = 'CtrlPMixed'  " default=CtrlP, Mixed is much cooler
 let ctrlp_filter_greps = "".
     \ "egrep -iv '\\.(" .
     \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
