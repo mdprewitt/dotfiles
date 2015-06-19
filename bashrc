@@ -123,7 +123,7 @@ gsl() {
 # polysh into all servers of a type
 psh() {
 	local hosts=`gsl $1`
-	local other_args=${2} ... ${10}
+    shift
 	local server
 	
 	# remove the existing entries in ~/.ssh/known_hosts
@@ -136,7 +136,7 @@ psh() {
 	ssh-keyscan -H $hosts >> $HOME/.ssh/known_hosts 2> /dev/null
 	
 	# ssh into them simulaneously
-	polysh $hosts 
+	polysh $hosts $*
 }
 
 if [[ `which fortune` ]] ; then
