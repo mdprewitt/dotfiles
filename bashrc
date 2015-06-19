@@ -129,11 +129,11 @@ psh() {
 	# remove the existing entries in ~/.ssh/known_hosts
 	for server in $hosts
 	do
-		ssh-keygen -R $server
+		ssh-keygen -H -R $server > /dev/null 2>&1
 	done
 
 	# rescan and add them to known_hosts
-	ssh-keyscan $hosts >> $HOME/.ssh/known_hosts
+	ssh-keyscan -H $hosts >> $HOME/.ssh/known_hosts 2> /dev/null
 	
 	# ssh into them simulaneously
 	polysh $hosts 
