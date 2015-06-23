@@ -136,6 +136,7 @@ psh() {
 	ssh-keyscan -H $hosts >> $HOME/.ssh/known_hosts 2> /dev/null
 	
 	# ssh into them simulaneously
+    echo "Connecting to $hosts"
 	polysh $hosts $*
 }
 
