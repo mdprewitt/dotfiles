@@ -15,6 +15,9 @@ call vundle#begin('~/.vim/vundle')
 " Let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
 
+" react/jsx
+Plugin 'mxw/vim-jsx.git'
+
 " fancy status bar
 Plugin 'Lokaltog/vim-powerline.git'
 set laststatus=2 " set this to 2 to bring it back
