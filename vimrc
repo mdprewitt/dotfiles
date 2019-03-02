@@ -23,7 +23,7 @@ Plugin 'Lokaltog/vim-powerline.git'
 set laststatus=2 " set this to 2 to bring it back
 
 " fuzy search
-Plugin 'kien/ctrlp.vim.git'
+Plugin 'ctrlpvim/ctrlp.vim.git'
 "" let g:ctrlp_custom_ignore= "(jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po)$"
 let g:ctrlp_regexp = 1      " default=0
 let g:ctrlp_max_files = 0   " default=10000
@@ -52,10 +52,10 @@ Plugin 'tpope/vim-pathogen.git'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'airblade/vim-gitgutter.git'
 
-if v:version > 703 || (v:version == 703 && has('patch584'))
+" if v:version > 703 || (v:version == 703 && has('patch584'))
 	" autocomplete
-	Plugin 'Valloric/YouCompleteMe.git'
-endif
+	" Plugin 'Valloric/YouCompleteMe.git'
+" endif
 
 " syntax
 Plugin 'kchmck/vim-coffee-script.git'
