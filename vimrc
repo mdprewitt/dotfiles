@@ -61,6 +61,7 @@ Plugin 'airblade/vim-gitgutter.git'
 Plugin 'kchmck/vim-coffee-script.git'
 Plugin 'rodjek/vim-puppet.git'
 Plugin 'vim-scripts/python.vim.git'
+Plugin 'mfukar/robotframework-vim.git'
 syntax on
 
 " checking syntax errors
@@ -146,6 +147,8 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 " au Syntax * RainbowParenthesesLoadChevrons
 
+autocmd BufNewFile,BufRead *.robot set filetype=robot
+
 " kill trailing whitespace function
 fun! KillTrailingWhitespace()
 	autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -216,6 +219,13 @@ autocmd FileType python
 			\ set colorcolumn=120 |
 			\ call KillTrailingWhitespace() |
 			\ let g:syntastic_python_checkers = ['flake8']
+
+" set robot preferences
+autocmd FileType robot
+			\ set expandtab |
+			\ set shiftwidth=4 |
+			\ set softtabstop=4 |
+			\ call KillTrailingWhitespace()
 
 " set puppet preferences
 autocmd FileType puppet
