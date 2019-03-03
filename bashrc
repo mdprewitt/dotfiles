@@ -52,8 +52,8 @@ set -o emacs
 
 # git bash autocomplete
 BREW=`which brew`
-if [[ "$BREW" && -f $( $BREW --prefix )/etc/bash_completion ]] ; then 
-	source $( $BREW --prefix )/etc/bash_completion
+if [[ "$BREW" && -f $( $BREW --prefix )/etc/profile.d/bash_completion.sh ]] ; then 
+	source $( $BREW --prefix )/etc/profile.d/bash_completion.sh
 elif [[ -f /etc/bash_completion ]] ; then 
 	source /etc/bash_completion
 else
@@ -78,16 +78,6 @@ alias tas="tmux attach-session -t"
         # tmux switch -t 0
         # tmux kill-session -a -t 0 
 # fi
-
-# Just for Chartbeat
-# ------------------
-export CB_REPO=~/cb
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-export PYTHONPATH=$CB_REPO:$PYTHONPATH
-
-# the worst things in the world to find in our repo
-export FUCKING_GLOBAL_CONFS=$CB_REPO/private/puppet/modules/chartbeat/templates/globalconf/
-export NODES_LOCAL=$CB_REPO/private/puppet/manifests/nodes_local.pp
 
 # set where virutal environments will live
 export WORKON_HOME=$HOME/.virtualenvs
@@ -146,4 +136,8 @@ if [[ `which fortune` ]] ; then
 #  (__)    )\
 #     ||--|| *
 	fortune -s | cowsay $(perl -e '@a=qw/b d g p s t w y/; print q/-/, $a[int(rand(scalar @a))]')
+fi
+
+if [[ -f ~/.bashrc_local ]] ; then
+    source ~/.bashrc_local
 fi
