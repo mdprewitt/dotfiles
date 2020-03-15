@@ -11,6 +11,7 @@ user=${LOGNAME}
 
 # Reads server/volumes from ~/.backup_config.  Format:
 # server mount_type vol1 vol2 ...
+# server1._afpovertcp._tcp.local afp vol1 vol2
 #
 # Password for server stored in ~/.secrets/server
 
@@ -21,7 +22,7 @@ while read -r server server_type volumes ; do
     #for vol in music home photo video vol1 ; do
     for vol in ${volumes} ; do
         # unmount drive if it's already mounted by me
-        for m in $( mount | grep ${user}@${server} | grep ${vol} | perl -fane 'print "$F[2]\n"' ) ; do
+        for m in $( mount | grep ${user}@${server}/${vol} | perl -fane 'print "$F[2]\n"' ) ; do
             umount $m
         done
 
@@ -29,10 +30,11 @@ while read -r server server_type volumes ; do
         mount -t afp afp://${user}:${pw}@${server}/${vol} ${mntpath}
 
         # backup
+        mkdir -p ${backup_drive}/${vol}
         rsync -rav \
             --exclude '#recycle' \
             ${mntpath}/* \
-            ${backup_drive}/${vol}
+            ${backup_drive}/${vol}/
 
         # unmount drive
         umount ${mntpath}
