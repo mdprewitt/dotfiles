@@ -4,6 +4,7 @@ if [[ ! -e ${backup_drive} ]] ; then
     echo "Cannot find backup drive ${backup_drive}"
     exit 1
 fi
+PATH=/sbin:$PATH
 
 mntpath=/tmp/mnt.$$
 mkdir ${mntpath}
@@ -19,7 +20,6 @@ while read -r server server_type volumes ; do
     echo "Running for ${server}"
     pw=$(cat ~/.secrets/${server})
 
-    #for vol in music home photo video vol1 ; do
     for vol in ${volumes} ; do
         # unmount drive if it's already mounted by me
         for m in $( mount | grep ${user}@${server}/${vol} | perl -fane 'print "$F[2]\n"' ) ; do
