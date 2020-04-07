@@ -6,8 +6,8 @@ if [[ ! -e ${backup_drive} ]] ; then
 fi
 PATH=/sbin:$PATH
 
-mntpath=/tmp/mnt.$$
-mkdir ${mntpath}
+mntpath=~/tmp/mnt.$$
+mkdir -p ${mntpath}
 user=${LOGNAME}
 
 # Reads server/volumes from ~/.backup_config.  Format:
