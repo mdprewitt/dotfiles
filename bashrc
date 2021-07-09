@@ -45,7 +45,7 @@ if [ `which mvim` ] ; then
 	alias vim=mvim
 
 fi
-set -o emacs
+set -o vi
 
 # source my xmodmap
 [[ -f ~/.xmodmap ]] && xmodmap ~/.xmodmap 2>/dev/null
