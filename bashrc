@@ -27,6 +27,7 @@ path_prepend /Applications
 path_prepend /usr/texbin 
 path_prepend /Applications/Postgres.app/Contents/Versions/9.3/bin
 path_prepend /usr/local/bin
+path_prepend $HOME/.pyenv/bin           # for pyenv
 
 # sync bash history with multiple sessions
 export HISTCONTROL=ignoredups:erasedups
@@ -78,6 +79,8 @@ alias tas="tmux attach-session -t"
         # tmux switch -t 0
         # tmux kill-session -a -t 0 
 # fi
+
+eval "$(pyenv init -)"
 
 # set where virutal environments will live
 export WORKON_HOME=$HOME/.virtualenvs
